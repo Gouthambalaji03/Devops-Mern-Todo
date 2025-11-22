@@ -1,6 +1,7 @@
 const request = require("supertest");
 const { server, app } = require("../index"); // Import your app here
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const { log } = require("console");
 
 describe("GET api/tasks", () => {
   it("it should return 200 ok", async () => {
@@ -11,6 +12,7 @@ describe("GET api/tasks", () => {
   it("it should return object and task property ok", async () => {
     const res = await request(app).get("/api/tasks");
     expect(typeof res.body).toBe("object");
+    console.log(res.body.tasks,'DATA SEEDED');
     expect(res.body).toHaveProperty("tasks")
   });
 });
